@@ -9,6 +9,14 @@ dependencies = [
     "pytest-playwright>=0.4.0",
 ]
 
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["..", "."]
+include = ["playwright_tests*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]

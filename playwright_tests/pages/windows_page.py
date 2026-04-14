@@ -19,6 +19,7 @@ class WindowsPage(BasePage):
 
     def switch_to_new_window_page(self):
         new_page = self.open_new_window()
+        new_page.wait_for_load_state("domcontentloaded")
         from .new_window_page import NewWindowPage
 
         return NewWindowPage(new_page, self.log)

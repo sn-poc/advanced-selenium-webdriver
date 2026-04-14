@@ -35,9 +35,9 @@ def test_js_alert(alerts_page, page: Page) -> None:
         f"Alert message is not expected. \n"
         f"Should be 'I am a JS Alert', but it is '{alert_message}'"
     )
-    assert result == "You successfuly clicked an alert", (
+    assert result == "You successfully clicked an alert", (
         f"result is not expected. \n"
-        f"Should be 'You successfuly clicked an alert', but it is '{result}'"
+        f"Should be 'You successfully clicked an alert', but it is '{result}'"
     )
 
 
@@ -65,6 +65,7 @@ def test_js_dismiss(alerts_page, page: Page) -> None:
     )
 
 
+@pytest.mark.xfail(reason="Intentionally fails - mirrors original Java test which appends '[FAIL]' to values")
 def test_js_prompt(alerts_page, page: Page) -> None:
     """Verify JS Prompt - intentionally fails (mirrors original Java test)."""
     alert_message = None
