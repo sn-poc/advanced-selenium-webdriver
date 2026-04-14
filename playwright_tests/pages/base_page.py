@@ -34,25 +34,6 @@ class BasePage:
     def get_current_page_source(self) -> str:
         return self.page.content()
 
-    def switch_to_alert_and_get_text(self) -> str:
-        dialog_message = ""
-
-        def handle_dialog(dialog):
-            nonlocal dialog_message
-            dialog_message = dialog.message
-
-        self.page.once("dialog", handle_dialog)
-        return dialog_message
-
-    def accept_alert(self) -> None:
-        self.page.once("dialog", lambda dialog: dialog.accept())
-
-    def dismiss_alert(self) -> None:
-        self.page.once("dialog", lambda dialog: dialog.dismiss())
-
-    def type_into_alert_and_accept(self, text: str) -> None:
-        self.page.once("dialog", lambda dialog: dialog.accept(text))
-
     def switch_to_frame(self, frame_selector: str):
         return self.page.frame_locator(frame_selector)
 
